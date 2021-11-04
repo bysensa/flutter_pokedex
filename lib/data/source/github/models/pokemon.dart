@@ -64,7 +64,7 @@ class GithubPokemonModel {
   final String weight;
 
   @JsonKey(name: 'typeofpokemon', disallowNullValue: true)
-  final List<String> types;
+  final List<String>? types;
 
   @JsonKey(defaultValue: [])
   final List<String> weaknesses;

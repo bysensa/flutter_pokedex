@@ -5,19 +5,23 @@ import 'package:pokedex/data/source/mappers/local_to_entity_mapper.dart';
 import 'package:pokedex/domain/entities/pokemon.dart';
 
 abstract class PokemonRepository {
-  Future<List<Pokemon>> getPokemons({int limit, int page});
+  Future<List<Pokemon>> getPokemons({required int limit, required int page});
 
   Future<Pokemon> getPokemon(String number);
 }
 
 class PokemonDefaultRepository extends PokemonRepository {
-  PokemonDefaultRepository({this.githubDataSource, this.localDataSource});
+  PokemonDefaultRepository(
+      {required this.githubDataSource, required this.localDataSource});
 
   final GithubDataSource githubDataSource;
   final LocalDataSource localDataSource;
 
   @override
-  Future<List<Pokemon>> getPokemons({int limit, int page}) async {
+  Future<List<Pokemon>> getPokemons({
+    required int limit,
+    required int page,
+  }) async {
     final hasCachedData = await localDataSource.hasData();
 
     if (!hasCachedData) {

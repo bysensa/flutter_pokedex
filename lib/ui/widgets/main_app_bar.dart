@@ -13,12 +13,12 @@ class MainSliverAppBar extends SliverAppBar {
   );
 
   MainSliverAppBar({
-    GlobalKey appBarKey,
+    GlobalKey? appBarKey,
     String title = 'Pokedex',
     double height = kToolbarHeight + mainAppbarPadding * 2,
     double expandedFontSize = 30,
-    void Function() onLeadingPress = AppNavigator.pop,
-    void Function() onTrailingPress,
+    VoidCallback? onLeadingPress = AppNavigator.pop,
+    VoidCallback? onTrailingPress,
   }) : super(
           centerTitle: true,
           expandedHeight: height,
@@ -44,15 +44,20 @@ class MainSliverAppBar extends SliverAppBar {
               final minHeight = safeAreaTop + kToolbarHeight;
               final maxHeight = height + safeAreaTop;
 
-              final percent = (constraints.maxHeight - minHeight) / (maxHeight - minHeight);
+              final percent =
+                  (constraints.maxHeight - minHeight) / (maxHeight - minHeight);
 
               final currentTextStyle = _textStyle.copyWith(
-                fontSize: _textStyle.fontSize + (expandedFontSize - _textStyle.fontSize) * percent,
+                fontSize: _textStyle.fontSize! +
+                    (expandedFontSize - _textStyle.fontSize!) * percent,
               );
 
-              final textWidth = getTextSize(context, title, currentTextStyle).width;
+              final textWidth =
+                  getTextSize(context, title, currentTextStyle).width;
               final startX = mainAppbarPadding;
-              final endX = MediaQuery.of(context).size.width / 2 - textWidth / 2 - startX;
+              final endX = MediaQuery.of(context).size.width / 2 -
+                  textWidth / 2 -
+                  startX;
               final dx = startX + endX - endX * percent;
 
               return Container(
@@ -67,7 +72,8 @@ class MainSliverAppBar extends SliverAppBar {
                           title,
                           style: currentTextStyle,
                         ),
-                        offset: Offset(dx, constraints.maxHeight - kToolbarHeight),
+                        offset:
+                            Offset(dx, constraints.maxHeight - kToolbarHeight),
                       ),
                     ),
                   ],
@@ -79,7 +85,7 @@ class MainSliverAppBar extends SliverAppBar {
 }
 
 class MainAppBar extends AppBar {
-  MainAppBar({Widget title, IconData rightIcon})
+  MainAppBar({required Widget title, required IconData rightIcon})
       : super(
           title: title,
           backgroundColor: Colors.transparent,

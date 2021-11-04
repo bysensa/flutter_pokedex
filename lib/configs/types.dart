@@ -3,11 +3,11 @@ import 'package:pokedex/domain/entities/pokemon_types.dart';
 
 class PokeTypes {
   const PokeTypes({
-    @required this.type,
-    @required this.superEffective,
-    @required this.notEffective,
-    @required this.nilEffective,
-    @required this.color,
+    required this.type,
+    required this.superEffective,
+    required this.notEffective,
+    required this.nilEffective,
+    required this.color,
   });
   final PokemonTypes type;
   final List<String> superEffective;
@@ -50,7 +50,15 @@ const List<PokeTypes> types = [
     type: PokemonTypes.grass,
     nilEffective: [],
     superEffective: ["Ground", "Rock", "Water"],
-    notEffective: ["Flying", "Poison", "Bug", "Steel", "Fire", "Grass", "Dragon"],
+    notEffective: [
+      "Flying",
+      "Poison",
+      "Bug",
+      "Steel",
+      "Fire",
+      "Grass",
+      "Dragon"
+    ],
     color: Color(0xFF78c851),
   ),
   PokeTypes(
@@ -99,7 +107,15 @@ const List<PokeTypes> types = [
     type: PokemonTypes.bug,
     nilEffective: [],
     superEffective: ["Grass", "Psychic", "Dark"],
-    notEffective: ["Fighting", "Flying", "Poison", "Ghost", "Steel", "Fire", "Fairy"],
+    notEffective: [
+      "Fighting",
+      "Flying",
+      "Poison",
+      "Ghost",
+      "Steel",
+      "Fire",
+      "Fairy"
+    ],
     color: Color(0xFFa8b821),
   ),
   PokeTypes(

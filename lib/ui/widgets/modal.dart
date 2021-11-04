@@ -6,8 +6,8 @@ class Modal extends StatelessWidget {
   static const Radius _borderRadius = Radius.circular(30.0);
 
   const Modal({
-    this.title,
-    @required this.child,
+    required this.title,
+    required this.child,
   });
 
   final String title;

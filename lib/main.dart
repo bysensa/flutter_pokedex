@@ -11,7 +11,7 @@ import 'package:pokedex/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await LocalDataSource.initialize();
+  LocalDataSource.initialize();
 
   runApp(ProviderScope(child: PokedexApp()));
 }
@@ -38,13 +38,14 @@ class PokedexApp extends StatelessWidget {
       builder: (context, child) {
         final data = MediaQuery.of(context);
         final smallestSize = min(data.size.width, data.size.height);
-        final textScaleFactor = min(smallestSize / AppConstants.designScreenSize.width, 1.0);
+        final textScaleFactor =
+            min(smallestSize / AppConstants.designScreenSize.width, 1.0);
 
         return MediaQuery(
           data: data.copyWith(
             textScaleFactor: textScaleFactor,
           ),
-          child: child,
+          child: child!,
         );
       },
     );

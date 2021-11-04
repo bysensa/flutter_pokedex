@@ -35,7 +35,8 @@ class LocalDataSource {
     await pokemonBox.putAll(pokemonsMap);
   }
 
-  Future<List<PokemonHiveModel>> getPokemons({int page, int limit}) async {
+  Future<List<PokemonHiveModel>> getPokemons(
+      {required int page, required int limit}) async {
     final pokemonBox = Hive.box<PokemonHiveModel>(PokemonHiveModel.boxKey);
     final totalPokemons = pokemonBox.length;
 
